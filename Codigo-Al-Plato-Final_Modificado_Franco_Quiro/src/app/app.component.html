@@ -1,0 +1,85 @@
+<ion-app>
+  <app-splashscreen *ngIf="showSplash" (splashFinished)="onSplashFinished()"></app-splashscreen>
+  <ion-router-outlet *ngIf="!showSplash"></ion-router-outlet>
+
+  <app-info-pedido *ngIf="mostrarBotonInfo && !showSplash"></app-info-pedido>
+ 
+  <div *ngIf="!showSplash">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="dark">
+        <img src="assets/iconos/elegir.png" alt="">
+      </ion-fab-button>
+  
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="setOpen(true)" data-desc="Custom"> 
+          ✏️
+        </ion-fab-button>
+        <ion-fab-button (click)="cambiarTema('argentina')"><img src="assets\iconos\argentinaEmoji.png" alt=""></ion-fab-button>
+        <ion-fab-button (click)="cambiarTema('naif')">🌸</ion-fab-button>
+        <ion-fab-button (click)="cambiarTema('profesional')">👔</ion-fab-button>
+        <ion-fab-button (click)="toggleOscuro()" color="light">
+          {{ modoOscuro ? '☀️' : '🌑' }}
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  
+    <ion-modal [isOpen]="isModalOpen" [initialBreakpoint]="0.85" [breakpoints]="[0, 0.85]">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Crea tu propio tema</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Fondo Pantalla</ion-label>
+              <input type="color" [(ngModel)]="customFondo" class="color-picker" style="width: 100%; height: 50px; border: none; background: transparent;">
+            </ion-item>
+  
+            <ion-item>
+              <ion-label position="stacked">Color Botones</ion-label>
+              <input type="color" [(ngModel)]="customBtn" class="color-picker" style="width: 100%; height: 50px; border: none; background: transparent;">
+            </ion-item>
+  
+            <ion-item>
+              <ion-label position="stacked">Color Texto y Títulos</ion-label>
+              <input type="color" [(ngModel)]="customTexto" class="color-picker" style="width: 100%; height: 50px; border: none; background: transparent;">
+            </ion-item>
+  
+            <ion-item>
+               <ion-label position="stacked">Tipo de Letra</ion-label>
+               <ion-select [(ngModel)]="customFuente" placeholder="Selecciona...">
+                 <ion-select-option value="'Raleway', sans-serif">Raleway</ion-select-option>
+                 <ion-select-option value="'Courier New', monospace">Courier</ion-select-option>
+                 <ion-select-option value="'Impact', sans-serif">Impact</ion-select-option>
+                 <ion-select-option value="'Dancing Script', cursive">Cursiva</ion-select-option>
+               </ion-select>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label position="stacked">Forma del Botón</ion-label>
+              <ion-select [(ngModel)]="customFormaBoton" placeholder="Selecciona...">
+                <ion-select-option value="0px">Cuadrado</ion-select-option>
+                <ion-select-option value="26px">Redondeado (Original)</ion-select-option>
+                <ion-select-option value="50px">Píldora (Ovalado)</ion-select-option>
+              </ion-select>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label position="stacked">Tamaño ({{customRango}}px)</ion-label>
+              <ion-range min="12" max="32" [(ngModel)]="customRango"></ion-range>
+            </ion-item>
+          </ion-list>
+  
+          <ion-button expand="block" (click)="aplicarCustom()" class="ion-margin-top">
+            APLICAR Y GUARDAR
+          </ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+</ion-app>

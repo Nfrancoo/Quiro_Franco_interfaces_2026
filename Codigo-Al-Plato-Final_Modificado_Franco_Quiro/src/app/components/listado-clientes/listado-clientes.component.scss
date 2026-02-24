@@ -1,0 +1,81 @@
+$bg-dark: transparent;
+$card-bg: #1e1e1e;
+$primary: #d84f45;
+$text-light: #ffffff;
+$text-dim: #aaaaaa;
+
+.container {
+  padding: 20px; padding-bottom: 100px; min-height: 100vh;
+  display: flex; flex-direction: column; gap: 20px;
+  background: var(--fondo-body, $bg-dark);
+  font-family: var(--fuente-principal);
+}
+
+.title {
+  color: var(--acento, $primary);
+  text-align: center; font-weight: bold; font-size: 1.8rem; margin-bottom: 15px;
+  border-bottom: 1px solid var(--acento, #333); padding-bottom: 10px; flex-shrink: 0;
+}
+
+.cards-list { display: flex; flex-direction: column; gap: 20px; }
+
+.client-card {
+  background-color: var(--btn-bg, $card-bg);
+  border-radius: var(--btn-radio, 15px);
+  overflow: hidden; border: 1px solid var(--acento, #333);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  animation: slideIn 0.4s ease-out;
+
+  .card-header {
+    background-color: var(--bg-grad-2, #2a2a2a);
+    padding: 15px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--bg-grad-1, #444);
+
+    .user-info {
+      display: flex; align-items: center; gap: 12px;
+      .avatar { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--acento, $primary); }
+      .text-info {
+        h3 { margin: 0; color: var(--texto-general, $text-light); font-size: 1.1rem; }
+        .dni { margin: 2px 0 0; color: var(--texto-general, $text-dim); font-size: 0.9rem; opacity: 0.8; }
+      }
+    }
+    .badge-pendiente {
+      background-color: var(--acento, #ff9800); color: var(--btn-texto, #000);
+      font-weight: bold; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase;
+    }
+  }
+
+  .card-body {
+    padding: 15px 20px;
+    .email-row {
+      color: var(--texto-general, $text-dim); font-size: 0.95rem;
+      display: flex; align-items: center; gap: 8px;
+      fa-icon { color: var(--acento, $primary); }
+    }
+  }
+
+  .card-actions {
+    display: flex; background-color: var(--bg-grad-1, #151515); padding: 10px; gap: 10px;
+    button {
+      flex: 1; padding: 12px; border-radius: var(--btn-radio, 8px); border: none; font-weight: bold; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--fuente-principal);
+      &:active { transform: scale(0.98); }
+    }
+    .btn-deny { background-color: var(--btn-bg, #2a2a2a); color: var(--acento, #ff5252); border: 1px solid var(--acento, #ff5252); }
+    .btn-accept { background: var(--acento, linear-gradient(90deg, #4caf50, #2e7d32)); color: var(--btn-texto, #fff); box-shadow: 0 4px 10px rgba(0,0,0, 0.3); }
+  }
+}
+
+.empty-state { text-align: center; color: var(--texto-general, #666); margin-top: 50px; font-size: 1.2rem; }
+
+.back-button {
+  position: fixed; bottom: 20px; left: 20px; z-index: 100;
+  button { width: 50px; height: 50px; border-radius: 50%; background: var(--btn-bg, #333); color: var(--acento, $primary); border: 2px solid var(--acento, $primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+}
+
+.spinner-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--bg-grad-1, rgba(0,0,0,0.9)); display: flex; justify-content: center; align-items: center; z-index: 9999;
+  .spinner-container { display: flex; flex-direction: column; align-items: center; p { color: var(--acento, #fff); font-weight: bold; margin-top: 15px; font-family: var(--fuente-principal);} }
+  .spinning-logo { width: 80px; height: 80px; animation: spin 1.5s linear infinite; filter: drop-shadow(0 0 10px var(--acento)); }
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

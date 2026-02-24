@@ -1,0 +1,117 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "~leaflet/dist/leaflet.css";
+@import "node_modules/leaflet/dist/leaflet.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+//muevo el body directamente a los componentes que son usados ya que al momento de scannear y poner todo transparente para que se vea la cam en la propia pantalla de esta forma se veria todo rojo
+body {
+  margin: 0;
+    background: var(--fondo-body, linear-gradient(147deg, rgb(208, 211, 208) 0%, #04c0c0 74%));
+  min-height: 100vh;
+
+  // background: transparent;
+  // box-shadow: none;
+}
+
+// Cuando el escaneo de código de barras esta activo
+body.barcode-scanning-active {
+  background: transparent !important;
+  box-shadow: none;
+}
+// en teoria cuando se muestre el mapa va a estar en transparente
+// body.maps-content {
+//   background: transparent;
+//   box-shadow: none;
+// }
+
+:root {
+  --bg-grad-1: #003566;
+  --bg-grad-2: #0077b6;
+  --shape-1: #90e0ef;
+  --shape-2: #007f5f;
+  --acento: #00b4d8;
+  --btn-bg: #ffffff;
+  --btn-texto: #007f5f;
+  --texto-general: #000000;
+  --fuente-principal: 'Raleway', sans-serif;
+  --btn-radio: 26px; /* La forma de tus botones actuales */
+  --fondo-body: linear-gradient(147deg, rgb(208, 211, 208) 0%, #04c0c0 74%); /* Tu fondo original */
+}
+
+body.tema-argentina {
+  --bg-grad-1: #d9e3ec; /* Celeste bandera */
+  --bg-grad-2: #ffffff; /* Blanco */
+  --shape-1: #f6b40e;   /* Sol de mayo */
+  --shape-2: #74acdf;
+  --acento: #f6b40e;
+  --btn-bg: #ffffff;
+  --btn-texto: #74acdf;
+  --texto-general: #333333;
+  --fondo-body: #74acdf;
+}
+
+body.tema-naif {
+  --bg-grad-1: #ee798b;
+  --bg-grad-2: #ffc0cb;
+  --shape-1: #ff69b4;
+  --shape-2: #ff1493;
+  --acento: #880631;
+  --btn-bg: #fff0f5;
+  --btn-texto: #660036;
+  --texto-general: #555555;
+  --fuente-principal: 'Dancing Script', cursive; /* O la que hayas elegido */
+  --btn-radio: 50px; /* Bien redonditos */
+  --fondo-body: #ffb6c1;
+}
+
+body.modo-oscuro {
+  --bg-grad-1: #bbbbbb;
+  --bg-grad-2: #2c2c2c;
+  --shape-1: #333333;
+  --shape-2: #1a1a1a;
+  --acento: #555555;
+  --btn-bg: #333333;
+  --btn-texto: #ffffff;
+  --texto-general: #ffffff;
+  --fondo-body: #121212;
+}
+
+body.tema-custom {
+  --bg-grad-1: #bbbbbb;
+  /* Acá no ponemos nada porque se inyectan desde TypeScript con root.setProperty */
+}
