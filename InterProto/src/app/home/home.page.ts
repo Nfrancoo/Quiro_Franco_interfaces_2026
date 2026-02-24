@@ -29,8 +29,7 @@ import {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone:true,
-  imports: [IonApp, IonRouterOutlet, CommonModule,FormsModule, // Mantenemos FormsModule para que funcione el [(ngModel)]
-    // 👇 Agregamos solo los componentes que usamos 👇
+  imports: [IonApp, IonRouterOutlet, CommonModule,FormsModule, 
     IonFab, IonFabButton, IonFabList, IonModal, IonHeader, IonToolbar, 
     IonTitle, IonButtons, IonButton, IonContent, IonList, IonItem, 
     IonLabel, IonSelect, IonSelectOption, IonRange,IonInput],
@@ -108,12 +107,12 @@ cambiarTema(tema: string) {
     this.logoActual = 'assets/iconos/naif-removebg-preview.png';
     this.iconoBoton = 'assets/iconos/flor.png';
   } else if(tema === 'profesional') {
-    // IMPORTANTE: Quité el espacio en "logo pro.png" -> Asegurate que el archivo se llame "logo_pro.png"
+
     this.logoActual = 'assets/iconos/logo_pro.png';
     this.iconoBoton = 'assets/iconos/profesional.png'; 
   } else if(tema === 'Custom'){
     this.logoActual = 'assets/iconos/pincel.png';
-    this.iconoBoton = ''; // Sin icono en botón para Custom
+    this.iconoBoton = ''; 
   }
 }
 
@@ -131,7 +130,7 @@ cambiarTema(tema: string) {
   this.temaActual = 'custom';
   this.temaClaseActual = 'tema-custom';
 
-  // Mantenemos TU estructura de setCustomTheme
+
   this.themeService.setCustomTheme(
     this.customFondo, 
     this.customBtn, 
@@ -139,7 +138,7 @@ cambiarTema(tema: string) {
     this.customFuente, 
     this.customRango, 
     this.customFormaBoton,
-    this.textoSubtitulo // El parámetro que agregaste
+    this.textoSubtitulo 
   );
 
   this.actualizarLogo('Custom');

@@ -65,7 +65,7 @@ ion-content {
   padding: 15px;
   background: var(--btn-bg, #004a99);
   color: var(--btn-texto, #fff);
-  font-family: inherit; /* Esto hace que use la fuente del wrapper */
+  font-family: inherit; 
   border-radius: var(--btn-radio) !important;
   transition: all 0.3s ease;
   border: none;
@@ -73,21 +73,21 @@ ion-content {
   font-size: 1.1rem;
 
   .btn-icon {
-    width: 30px; /* Tamaño icono dentro del botón */
+    width: 30px; 
     height: 30px;
     margin-right: 10px;
   }
 }
 .subtitle {
   transition: all 0.3s ease;
-  color: var(--texto-color) !important; /* El !important es clave aquí */
+  color: var(--texto-color) !important;
   font-family: inherit;
-  display: block; /* Asegura que sea visible */
-  min-height: 1.2em; /* Evita que colapse si está vacío */
+  display: block;
+  min-height: 1.2em;
 }
-/* Arreglo para el FAB en móvil */
+
 ion-fab {
-  position: fixed; /* Lo clavamos a la pantalla */
+  position: fixed; 
   bottom: 20px;
   right: 20px;
   z-index: 999;

@@ -14,8 +14,8 @@ export class ThemeService {
   }
 
   setTheme(nombreTema: string) {
-    this.limpiarClases(); // Borramos clases viejas
-    this.limpiarCustomStyles(); // Borramos estilos inline viejos
+    this.limpiarClases(); 
+    this.limpiarCustomStyles(); 
 
     if (nombreTema !== 'profesional') {
       document.body.classList.add(`tema-${nombreTema}`);
@@ -40,7 +40,7 @@ public subtituloPersistente: string = 'Personalización Total';
       root.setProperty('--tamano-fuente', `${tamanoLetra}px`);
       root.setProperty('--btn-radio', customFormaBoton);
       
-      // Guardamos el texto en el servicio para que sea accesible
+
       this.subtituloPersistente = textoSubtitulo;
       
       this.temaActualSubject.next('custom');
