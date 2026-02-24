@@ -14,8 +14,8 @@ export class ThemeService {
   }
 
   setTheme(nombreTema: string) {
-    this.limpiarClases(); // Borramos clases viejas
-    this.limpiarCustomStyles(); // Borramos estilos inline viejos
+    this.limpiarClases(); 
+    this.limpiarCustomStyles(); 
 
     if (nombreTema !== 'profesional') {
       document.body.classList.add(`tema-${nombreTema}`);
@@ -32,10 +32,9 @@ export class ThemeService {
 
     const root = document.documentElement.style;
     
-    // 👇 AGREGÁ ESTA LÍNEA PARA EL FONDO DEL HOME 👇
     root.setProperty('--fondo-body', colorFondo); 
     
-    // (Mantené el resto de las variables que ya tenías)
+
     root.setProperty('--bg-grad-1', colorFondo); 
     root.setProperty('--bg-grad-2', colorFondo); 
     root.setProperty('--btn-bg', colorBtn);

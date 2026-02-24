@@ -42,8 +42,7 @@ GoogleAuth.initialize();
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonApp, IonRouterOutlet, SplashscreenComponent, CommonModule, InfoPedidoComponent,FormsModule, // Mantenemos FormsModule para que funcione el [(ngModel)]
-    // 👇 Agregamos solo los componentes que usamos 👇
+  imports: [IonApp, IonRouterOutlet, SplashscreenComponent, CommonModule, InfoPedidoComponent,FormsModule,
     IonFab, IonFabButton, IonFabList, IonModal, IonHeader, IonToolbar, 
     IonTitle, IonButtons, IonButton, IonContent, IonList, IonItem, 
     IonLabel, IonSelect, IonSelectOption, IonRange],
@@ -60,9 +59,9 @@ export class AppComponent implements OnInit, OnDestroy {
   customFondo: string = '#000000';
   customBtn: string = '#00b4d8';
   customTexto: string = '#ffffff';
-  customFuente: string = "'Raleway', sans-serif"; // Tu fuente por defecto
+  customFuente: string = "'Raleway', sans-serif"; 
   customRango: number = 18;
-  customFormaBoton: string = "26px"; // El borde redondeado que usás por defecto
+  customFormaBoton: string = "26px"; 
 
   constructor(
     private platform: Platform,
@@ -90,13 +89,12 @@ export class AppComponent implements OnInit, OnDestroy {
     LocalNotifications.addListener('localNotificationActionPerformed', (notification) => {
       const extra = notification.notification.extra;
       
-      // 1. LOG DE DEPURACIÓN: Mira la consola al tocar la notificación
       console.log('🔔 Notificación tocada. Datos extra:', extra);
 
       if (!extra) return;
 
       this.ngZone.run(() => {
-        // Acciones Específicas
+
         if (extra.action === 'abrirPdf') {
           window.open(extra.targetPage, '_system');
         } 
@@ -111,12 +109,10 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         else if (extra.action === 'abrirDelivery') {
           console.log('Redirigiendo a Delivery por acción...');
-          this.router.navigateByUrl('/delivery'); // Usamos navigateByUrl que a veces fuerza mejor la ruta
+          this.router.navigateByUrl('/delivery');
         }
         
-        // 2. FALLBACK (PLAN B):
-        // Si no entró en ningún if anterior, pero tiene una ruta (targetPage), ir ahí.
-        // Esto arregla el problema si olvidaste poner el "action" al enviar la push.
+
         else if (extra.targetPage && typeof extra.targetPage === 'string' && extra.targetPage.startsWith('/')) {
              console.log('Acción no encontrada, usando targetPage:', extra.targetPage);
              this.router.navigateByUrl(extra.targetPage);
@@ -141,12 +137,12 @@ export class AppComponent implements OnInit, OnDestroy {
   let bloqueado = false;
 
   container.addEventListener('wheel', (e: WheelEvent) => {
-    e.preventDefault(); // ⛔ bloquea scroll libre del navegador
+    e.preventDefault();
 
     if (bloqueado) return;
     bloqueado = true;
 
-    const direccion = Math.sign(e.deltaY); // 1 baja, -1 sube
+    const direccion = Math.sign(e.deltaY); 
     const altura = container.clientHeight;
 
     container.scrollBy({
@@ -156,26 +152,24 @@ export class AppComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       bloqueado = false;
-    }, 650); // tiempo del snap
+    }, 650); 
   }, { passive: false });
 }
 
 cambiarTema(tema: string) {
-    // 👇 1. APAGAMOS EL MODO OSCURO AUTOMÁTICAMENTE 👇
     this.modoOscuro = false;
     document.body.classList.remove('modo-oscuro');
 
-    // 2. Aplicamos el nuevo tema
+
     this.themeService.setTheme(tema);
     this.reproducirSonido(tema); 
   }
 
   aplicarCustom() {
-    // 👇 1. APAGAMOS EL MODO OSCURO ACÁ TAMBIÉN 👇
     this.modoOscuro = false;
     document.body.classList.remove('modo-oscuro');
 
-    // 2. Aplicamos el tema custom
+
     this.themeService.setCustomTheme(
       this.customFondo, 
       this.customBtn, 
@@ -203,11 +197,9 @@ cambiarTema(tema: string) {
     
     if (this.modoOscuro) {
       document.body.classList.add('modo-oscuro');
-      // 👇 Llamamos al sonido de noche al encenderlo 👇
       this.reproducirSonido('modo-oscuro'); 
     } else {
       document.body.classList.remove('modo-oscuro');
-      // 👇 Llamamos a 'default' para que caiga en el else y suene la burbuja al apagarlo 👇
       this.reproducirSonido('default'); 
     }
   } 
