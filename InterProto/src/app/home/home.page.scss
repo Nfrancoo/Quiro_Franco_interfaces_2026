@@ -1,0 +1,144 @@
+ion-content {
+  --background: transparent;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical para celular */
+  align-items: center;
+  min-height: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.glass-card {
+  background: var(--tarjeta-bg, rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* Control estricto del tamaño del logo */
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.app-logo {
+  width: 120px;  /* Tamaño fijo, no variable */
+  height: 120px;
+  object-fit: contain;
+}
+
+.app-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--texto-color);
+  font-family: var(--fuente-principal);
+  margin-bottom: 5px;
+}
+
+.modern-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  background: var(--btn-bg, #004a99);
+  color: var(--btn-texto, #fff);
+  font-family: inherit; /* Esto hace que use la fuente del wrapper */
+  border-radius: var(--btn-radio) !important;
+  transition: all 0.3s ease;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+
+  .btn-icon {
+    width: 30px; /* Tamaño icono dentro del botón */
+    height: 30px;
+    margin-right: 10px;
+  }
+}
+.subtitle {
+  transition: all 0.3s ease;
+  color: var(--texto-color) !important; /* El !important es clave aquí */
+  font-family: inherit;
+  display: block; /* Asegura que sea visible */
+  min-height: 1.2em; /* Evita que colapse si está vacío */
+}
+/* Arreglo para el FAB en móvil */
+ion-fab {
+  position: fixed; /* Lo clavamos a la pantalla */
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.main-fab {
+  --background: #000000;
+  --color: #ffffff;
+  width: 65px;
+  height: 65px;
+}
+
+.color-picker {
+  width: 50px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+.arg-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  
+  .mini-btn {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .celeste { background: #74ACDF; color: white; }
+  .blanco { background: white; color: #74ACDF; border: 1px solid #74ACDF; }
+  .amarillo { background: #F6B40E; color: white; }
+}
+
+.naif-decor {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #ff6b6b;
+  margin-bottom: 15px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.glass-card {
+  transition: max-width 0.4s ease-in-out;
+}

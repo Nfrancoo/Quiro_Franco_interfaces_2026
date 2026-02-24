@@ -1,0 +1,110 @@
+<ion-content [fullscreen]="true">
+  <div class="main-wrapper" [ngClass]="temaClaseActual" [style.font-family]="customFuente"> 
+    <div class="glass-card" [style.max-width]="customAnchoCard + 'px'">
+      
+      <div class="logo-container">
+        <img [src]="logoActual" class="app-logo" alt="Logo">
+      </div>
+      
+      <h1 class="app-title">INTERPROTO</h1>
+      <p class="subtitle">{{ textoSubtitulo }}</p>
+
+      <div *ngIf="temaActual === 'argentina'" class="unique-section arg-buttons">
+        <button class="mini-btn celeste">A</button>
+        <button class="mini-btn blanco">F</button>
+        <button class="mini-btn amarillo">A</button>
+      </div>
+
+      <div *ngIf="temaActual === 'naif'" class="unique-section naif-decor">
+        <span>✨ Brilla siempre ✨</span>
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Tu nombre..." class="modern-input">
+      </div>
+
+      <button class="btn-primary" [style.font-family]="customFuente">
+        <img *ngIf="iconoBoton" [src]="iconoBoton" class="btn-icon">
+        <span>INGRESAR</span>
+      </button>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark">
+      <img src="assets/iconos/elegir.png" alt="menu">
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="setOpen(true)">✏️</ion-fab-button>
+      <ion-fab-button (click)="cambiarTema('argentina')">🇦🇷</ion-fab-button>
+      <ion-fab-button (click)="cambiarTema('naif')">🌸</ion-fab-button>
+      <ion-fab-button (click)="cambiarTema('profesional')">👔</ion-fab-button>
+      <ion-fab-button (click)="toggleOscuro()" color="light">
+        {{ modoOscuro ? '☀️' : '🌑' }}
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-modal [isOpen]="isModalOpen" [initialBreakpoint]="0.85" [breakpoints]="[0, 0.85]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Configuración Custom</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Texto Subtítulo</ion-label>
+            <ion-input type="text" [(ngModel)]="textoSubtitulo" name="subtitulo"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Ancho de Tarjeta ({{customAnchoCard}}px)</ion-label>
+            <ion-range min="280" max="450" [(ngModel)]="customAnchoCard"></ion-range>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Forma del Botón</ion-label>
+            <ion-select [(ngModel)]="customFormaBoton">
+              <ion-select-option value="0px">Cuadrado</ion-select-option>
+              <ion-select-option value="12px">Redondeado</ion-select-option>
+              <ion-select-option value="50px">Píldora</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Color Fondo</ion-label>
+            <input type="color" [(ngModel)]="customFondo" style="width:100%; height:40px; border:none;">
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Color Botón</ion-label>
+            <input type="color" [(ngModel)]="customBtn" style="width:100%; height:40px; border:none;">
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Color Texto</ion-label>
+            <input type="color" [(ngModel)]="customTexto" style="width:100%; height:40px; border:none;">
+          </ion-item>
+
+          <ion-item>
+             <ion-label position="stacked">Tipo de Letra</ion-label>
+             <ion-select [(ngModel)]="customFuente">
+               <ion-select-option value="'Raleway', sans-serif">Raleway</ion-select-option>
+               <ion-select-option value="'Courier New', monospace">Courier</ion-select-option>
+               <ion-select-option value="'Impact', sans-serif">Impact</ion-select-option>
+               <ion-select-option value="'Dancing Script', cursive">Cursiva</ion-select-option>
+             </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <ion-button expand="block" (click)="aplicarCustom()" class="ion-margin-top">
+          APLICAR Y GUARDAR
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

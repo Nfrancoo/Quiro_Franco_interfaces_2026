@@ -1,0 +1,100 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@900&family=Roboto:wght@300;400;700&display=swap');
+
+/* Ionic Imports */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* === 1. TEMA PROFESIONAL (Default) === */
+/* Estilo limpio, empresarial, azul marino y gris */
+:root {
+  --alineacion-global: center;
+  --fuente-principal: 'Roboto', sans-serif;
+  --tamano-fuente: 16px;
+
+  --fondo-app: #f4f6f8; /* Gris muy claro oficina */
+  --tarjeta-bg: #ffffff;
+  --texto-color: #2c3e50; /* Azul oscuro casi negro */
+
+  --btn-bg: #004e92; /* Azul Corporativo serio */
+  --btn-texto: #ffffff;
+  --btn-radio: 4px; /* Cuadrado */
+  --btn-sombra: 0 4px 6px rgba(0,0,0,0.1);
+
+  --input-bg: #eef2f5;
+  --input-borde: 1px solid #d1d9e6;
+}
+
+/* === 2. TEMA ARGENTINA === */
+.tema-argentina {
+  --alineacion-global: flex-start; /* Todo arriba */
+  --fuente-principal: 'Montserrat', sans-serif; /* Impactante */
+
+  /* Bandera hecha con CSS para que no falle la imagen */
+  --fondo-app: linear-gradient(180deg, #74ACDF 33%, #ffffff 33%, #ffffff 66%, #74ACDF 66%);
+  
+  --tarjeta-bg: rgba(255, 255, 255, 0.95);
+  --texto-color: #1a1a1a;
+
+  --btn-bg: #F6B40E; /* Amarillo Sol */
+  --btn-texto: #333;
+  --btn-radio: 12px;
+  --btn-sombra: 0 4px 0px #bf8b0a;
+
+  --input-bg: #fff;
+  --input-borde: 2px solid #74ACDF;
+}
+
+/* === 3. TEMA NAIF (Rosa) === */
+.tema-naif {
+  --alineacion-global: flex-end; /* Todo abajo */
+  --fuente-principal: 'Dancing Script', cursive;
+
+  --fondo-app: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%); /* ROSADO */
+  
+  --tarjeta-bg: rgba(255, 255, 255, 0.7);
+  --texto-color: #6a4a5c;
+
+  --btn-bg: #ff6b6b; /* Rosa fuerte */
+  --btn-texto: #fff;
+  --btn-radio: 50px; /* Redondo */
+  --btn-sombra: 5px 5px 0px rgba(255,255,255,0.5);
+
+  --input-bg: #fff0f5;
+  --input-borde: 2px dashed #ff6b6b;
+}
+
+/* === 4. TEMA CUSTOM (Lo define el usuario en TS) === */
+.tema-custom {
+  /* Las variables se inyectan desde TypeScript */
+}
+
+/* === MODO OSCURO (Toggle) === */
+body.modo-oscuro {
+  --fondo-app: #121212 !important;
+  --tarjeta-bg: #1e1e1e !important;
+  --texto-color: #ffffff !important;
+  --input-bg: #333 !important;
+  --input-borde: 1px solid #555 !important;
+  --btn-bg: #bb86fc !important;
+  --btn-texto: #000 !important;
+}
+
+/* APLICACIÓN GLOBAL */
+body {
+  background: var(--fondo-app);
+  color: var(--texto-color);
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-fuente);
+  transition: all 0.5s ease-in-out;
+  min-height: 100vh;
+  margin: 0;
+}
